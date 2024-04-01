@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         txtEmail.setText(SharedPrefManager.getInstance(this).getEmail());
         txtUsername.setText(SharedPrefManager.getInstance(this).getUsername());
-        getTask();
+        //getTask();
     }
 
     private void getTask() {
