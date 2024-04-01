@@ -45,7 +45,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         txtEmail.setText(SharedPrefManager.getInstance(this).getEmail());
         txtUsername.setText(SharedPrefManager.getInstance(this).getUsername());
-        //getTask();
+        //getTask() Este metodo debera recoger todas las tareas cuya clave foranea sea igual a 6 (que es la del admin);
+        //getTaskAssigned() Metodo que debera recoger todas las tareas asignadas al usuario que se encuentre logeado.
+        //getTaskAccepted() Metodo que debera recoger todas las tareas cuyo campo aceptado sea igual a 2 y que pertenezcan al usuario logeado.
+        //rellenarRecyclerView() Metodo que debera rellenar los 3 recyclerView con los datos obtenidos en los tres metodos anteriores.
     }
 
     private void getTask() {
