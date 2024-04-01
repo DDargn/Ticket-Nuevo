@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASK, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                System.out.println(response);
                 try {
                     JSONObject object = new JSONObject(response);
                     System.out.println(object.getInt("id"));
