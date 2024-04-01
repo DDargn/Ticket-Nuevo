@@ -4,4 +4,7 @@ Android 11.0("R") API Level 30
 
 Target JVM version 1.8 (Java 8)
 
+Tener en cuenta que cada vez que queramos hacer referencia al localhost desde android studio debemos usar la direccion predefinida 10.0.2.2 
+para asi llamar al localhost de nuestra maquina y no al localhost de la maquina virtual con la que estemos emulando en android
+
 (Avisame si necesitas mas informacion)
