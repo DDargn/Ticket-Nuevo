@@ -1,5 +1,7 @@
 package com.example.ticket;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -57,7 +59,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //getTaskAssigned() Metodo que debera recoger todas las tareas asignadas al usuario que se encuentre logeado.
         //getTaskAccepted() Metodo que debera recoger todas las tareas cuyo campo aceptado sea igual a 2 y que pertenezcan al usuario logeado.
         //rellenarRecyclerView() Metodo que debera rellenar los 3 recyclerView con los datos obtenidos en los tres metodos anteriores.
+        getTaskAssigned();
     }
+
 
     private void getTask() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASK, new Response.Listener<String>() {
@@ -66,29 +70,24 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 int fk_iduser=0;
                 try {
                     JSONObject object = new JSONObject(response);
-                    System.out.println(object);
+
                     JSONArray tasksArray = object.getJSONArray("Tasks");
-                    for (int i = 0; i < tasksArray.length(); i++) {
-                        // Obtener el objeto JSON actual
-                        JSONObject taskObject = tasksArray.getJSONObject(i);
 
-                        //comprobar que son task con el fk_user=6
-                        fk_iduser = taskObject.getInt("fk_iduser");
-
-
-                    }
-                    if (fk_iduser==6) {
+                    if (tasksArray!=null) {
                         ArrayList<Task> tareas = null;
+                        tareas = new ArrayList<>();
                         for (int i = 0; i < tasksArray.length(); i++) {
-                            tareas = new ArrayList<>();
+
                             JSONObject taskObject = tasksArray.getJSONObject(i);
                             Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
-                            System.out.println(task.toString());
+
                             tareas.add(task);
-                            System.out.println(tareas);
+
                         }
-                        //rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        rv.setAdapter(new TaskAdapter(tareas));
+                        System.out.println(tareas);
+                        TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
+                        rv.setAdapter(adapter);
+                        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     } else {
                         Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
 
@@ -111,6 +110,63 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
+
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    private void getTaskAssigned() {
+        final Integer fk_iduser = SharedPrefManager.getInstance(getApplicationContext()).getId();
+        String fk_iduser1=fk_iduser.toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASKASSIGNED, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject object = new JSONObject(response);
+
+                    JSONArray tasksArray = object.getJSONArray("Tasks");
+
+                    if (tasksArray!=null) {
+                        ArrayList<Task> tareas = null;
+                        tareas = new ArrayList<>();
+                        for (int i = 0; i < tasksArray.length(); i++) {
+
+                            JSONObject taskObject = tasksArray.getJSONObject(i);
+                            Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+
+                            tareas.add(task);
+
+                        }
+                        System.out.println(tareas);
+                        TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
+                        rvA.setAdapter(adapter);
+                        rvA.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    } else {
+                        Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        }
+
+        ) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("fk_iduser", fk_iduser1);
 
                 return params;
             }
