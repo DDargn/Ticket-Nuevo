@@ -10,15 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
-
-
 
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
-
     Context context;
     private ArrayList<Task> tasks; // Assuming you have a list of Task objects
+
+    private String data[]= new String[2];
 
     public TaskAdapter(Context context, ArrayList<Task> tasks) {
         this.context=context;
@@ -37,6 +35,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
         Task task = tasks.get(position);
         holder.titulo.setText(task.getTitle());
         holder.descripcion.setText(task.getText());
+
+
     }
 
     @Override
@@ -51,9 +51,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
-            titulo = itemView.findViewById(R.id.txtTitulo);
+            titulo = itemView.findViewById(R.id.txtTitle);
             descripcion = itemView.findViewById(R.id.txtContent);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    data[0]=titulo.getText().toString();
+                    data[1]=descripcion.getText().toString();
+                    devolverClick(data);
+                }
+            });
+
         }
+    }
+
+    private String[] devolverClick(String[] data) {
+        return data;
     }
 }
 
