@@ -57,18 +57,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    System.out.println("holamundo");
                     data[0]=titulo.getText().toString();
                     data[1]=descripcion.getText().toString();
-                    devolverClick(data);
+
                 }
             });
 
         }
     }
 
-    private String[] devolverClick(String[] data) {
-        return data;
-    }
+
 }
 

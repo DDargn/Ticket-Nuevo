@@ -31,7 +31,6 @@ import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView txtUsername, txtEmail;
     private Button btnLogout;
 
     private RecyclerView rv, rvAs, rvA;
@@ -60,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         getTaskAssigned();
         getTaskAccepted();
     }
+
 
 
     private void getTask() {
