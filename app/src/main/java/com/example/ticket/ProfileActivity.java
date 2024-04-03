@@ -48,13 +48,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         }
 
-        txtUsername = findViewById(R.id.txtUsername);
-        txtEmail = findViewById(R.id.txtUseremail);
+
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(this);
 
-        txtEmail.setText(SharedPrefManager.getInstance(this).getEmail());
-        txtUsername.setText(SharedPrefManager.getInstance(this).getUsername());
+
         getTask(); //Este metodo debera recoger todas las tareas cuya clave foranea sea igual a 6 (que es la del admin);
         //getTaskAssigned() Metodo que debera recoger todas las tareas asignadas al usuario que se encuentre logeado.
         //getTaskAccepted() Metodo que debera recoger todas las tareas cuyo campo aceptado sea igual a 2 y que pertenezcan al usuario logeado.
@@ -200,8 +198,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         }
                         System.out.println(tareas);
                         TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
-                        rvAs.setAdapter(adapter);
-                        rvAs.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        rvA.setAdapter(adapter);
+                        rvA.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     } else {
                         Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
 

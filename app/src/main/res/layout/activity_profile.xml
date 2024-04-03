@@ -10,47 +10,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvToDo"
+            android:layout_width="135dp"
+            android:layout_height="332dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="USER NAME"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            tools:visibility="invisible" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSet"
+            android:layout_width="135dp"
+            android:layout_height="331dp"
+            android:layout_marginStart="4dp" />
 
-        <TextView
-            android:id="@+id/txtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="USER NAME"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            tools:visibility="invisible" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="USER EMAIL"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            tools:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/txtUseremail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="USER EMAIL"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            tools:visibility="invisible" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAccept"
+            android:layout_width="135dp"
+            android:layout_height="333dp"
+            android:layout_marginStart="1dp" />
     </LinearLayout>
 
     <Button
@@ -61,33 +41,6 @@
         android:layout_marginEnd="12dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvToDo"
-        android:layout_width="156dp"
-        android:layout_height="332dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSet"
-        android:layout_width="124dp"
-        android:layout_height="331dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rvToDo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAccept"
-        android:layout_width="125dp"
-        android:layout_height="333dp"
-        android:layout_marginStart="1dp"
-        app:layout_constraintStart_toEndOf="@+id/rvSet"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
