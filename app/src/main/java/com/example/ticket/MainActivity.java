@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private EditText txtUsername, txtPassword, txtEmail;
     private Button btnAccept;
 
-    private TextView lblLogin;
+    private Button lblLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

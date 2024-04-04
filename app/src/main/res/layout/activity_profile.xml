@@ -18,19 +18,19 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvToDo"
             android:layout_width="135dp"
-            android:layout_height="332dp" />
+            android:layout_height="653dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSet"
             android:layout_width="135dp"
-            android:layout_height="331dp"
-            android:layout_marginStart="4dp" />
+            android:layout_height="653dp"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAccept"
             android:layout_width="135dp"
-            android:layout_height="333dp"
-            android:layout_marginStart="1dp" />
+            android:layout_height="653dp"
+            />
     </LinearLayout>
 
     <Button
@@ -47,8 +47,8 @@
         android:id="@+id/btnAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Aceptar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,8 +57,8 @@
         android:id="@+id/btnCompletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="16dp"
         android:text="Completar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

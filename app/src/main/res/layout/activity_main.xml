@@ -66,12 +66,12 @@
             android:id="@+id/btnAccept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Accept" />
+            android:text="Register" />
 
-        <TextView
+        <Button
             android:id="@+id/lblLogin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Pres here to Login"/>
+            android:layout_height="wrap_content"
+            android:text="Login" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

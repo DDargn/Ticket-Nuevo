@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText txtUsername, txtPassword;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtPassword = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(this);
     }
 
     private void userLogin() {
@@ -95,6 +97,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == btnLogin) {
             userLogin();
+        }else if(v == btnRegister){
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 }

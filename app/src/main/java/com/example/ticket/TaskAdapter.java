@@ -1,9 +1,11 @@
 package com.example.ticket;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +37,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
         Task task = tasks.get(position);
         holder.titulo.setText(task.getTitle());
         holder.descripcion.setText(task.getText());
-
+        Log.d("error", task.getTitle());
 
     }
 
@@ -47,17 +49,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
     public class TaskHolder extends RecyclerView.ViewHolder { // Define the ViewHolder as an inner class
 
         TextView titulo;
-        TextView descripcion;
+        EditText descripcion;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.txtTitle);
-            descripcion = itemView.findViewById(R.id.txtContent);
+            descripcion = itemView.findViewById(R.id.txtContext);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     System.out.println("holamundo");
+
                     data[0]=titulo.getText().toString();
                     data[1]=descripcion.getText().toString();
 
