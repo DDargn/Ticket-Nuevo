@@ -1,6 +1,9 @@
 package com.example.ticket;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +67,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
                     data[0]=titulo.getText().toString();
                     data[1]=descripcion.getText().toString();
 
+                    Intent intent = new Intent(context,VistaTarea.class);
+                    intent.putExtra("Data",data);
+                    context.startActivity(intent);
                 }
             });
 
