@@ -66,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASK, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 int fk_iduser=0;
                 try {
                     JSONObject object = new JSONObject(response);

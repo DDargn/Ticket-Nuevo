@@ -7,25 +7,29 @@
     tools:context=".VistaTarea">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtTitleV"
         android:layout_width="202dp"
         android:layout_height="154dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtContextV"
         android:layout_width="386dp"
         android:layout_height="404dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="210dp" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleV" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aceptar"
@@ -33,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rechazar"
