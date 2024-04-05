@@ -1,0 +1,11 @@
+Al Iniciar la aplicacion veremos la pantalla Login en ella introduciremos los datos: prueba, contraseña 4321. O cualquiera que hayamos registrado desde la misma aplicacion,
+si no lo hacemos de esta forma y creamos un campo directamente en la bbdd no funcionara por que la contraseña va cifrada
+
+Una vez logeados veremos tres columnas:
+
+Tareas sin asignar, tareas asignadas al usuario registrado y tareas aceptadas por el usuario respectivamente.
+
+si clicamos sobre el hueco blanco encima de cualquier tarea veremos sus detalles y podremos aceptarla, en caso de que sea asignada o sin asignacion, y tambien podremos rechazar tareas asignadas y aceptadas.
+tener cuidado con esta ventana porque si una de las listas esta vacia dara error porque el json con la consulta volvera vacio. 
+
+En caso de querer entrar con otra cuenta habra que pulsar el botn de Logout, si no hacemos eso entrará nuevamente a la aplicacion con el ultimo usuario registrado.
