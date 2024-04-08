@@ -32,8 +32,10 @@
                 android:layout_weight="1"
                 android:paddingVertical="30dp"
                 android:paddingTop="50dp"
+                android:text="titulo"
                 android:textAlignment="center"
-                android:visibility="visible" />
+                android:visibility="visible"
+                tools:visibility="visible" />
 
             <EditText
                 android:id="@+id/txtContext"
