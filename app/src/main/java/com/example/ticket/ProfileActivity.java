@@ -69,9 +69,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                 int fk_iduser=0;
                 try {
-                    JSONObject object = new JSONObject(response);
+                    if(response.equals("[]")){
 
-                    JSONArray tasksArray = object.getJSONArray("Tasks");
+                    }else{
+                        JSONObject object = new JSONObject(response);
+
+                        JSONArray tasksArray = object.getJSONArray("Tasks");
+
+
 
                     if (tasksArray!=null) {
                         ArrayList<Task> tareas = null;
@@ -91,6 +96,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     } else {
                         Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
 
+                    }
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -123,30 +129,34 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASKASSIGNED, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                System.out.println(response);
                 try {
-                    JSONObject object = new JSONObject(response);
+                    if(response.equals("[]")){
 
-                    JSONArray tasksArray = object.getJSONArray("Tasks");
+                    }else {
+                        JSONObject object = new JSONObject(response);
 
-                    if (tasksArray!=null) {
-                        ArrayList<Task> tareas = null;
-                        tareas = new ArrayList<>();
-                        for (int i = 0; i < tasksArray.length(); i++) {
+                        JSONArray tasksArray = object.getJSONArray("Tasks");
 
-                            JSONObject taskObject = tasksArray.getJSONObject(i);
-                            Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+                        if (tasksArray != null) {
+                            ArrayList<Task> tareas = null;
+                            tareas = new ArrayList<>();
+                            for (int i = 0; i < tasksArray.length(); i++) {
 
-                            tareas.add(task);
+                                JSONObject taskObject = tasksArray.getJSONObject(i);
+                                Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+
+                                tareas.add(task);
+
+                            }
+                            System.out.println(tareas);
+                            TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
+                            rvAs.setAdapter(adapter);
+                            rvAs.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
 
                         }
-                        System.out.println(tareas);
-                        TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
-                        rvAs.setAdapter(adapter);
-                        rvAs.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
-
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -182,28 +192,32 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(String response) {
 
                 try {
-                    JSONObject object = new JSONObject(response);
+                    if(response.equals("[]")){
 
-                    JSONArray tasksArray = object.getJSONArray("Tasks");
+                    }else {
+                        JSONObject object = new JSONObject(response);
 
-                    if (tasksArray!=null) {
-                        ArrayList<Task> tareas = null;
-                        tareas = new ArrayList<>();
-                        for (int i = 0; i < tasksArray.length(); i++) {
+                        JSONArray tasksArray = object.getJSONArray("Tasks");
 
-                            JSONObject taskObject = tasksArray.getJSONObject(i);
-                            Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+                        if (tasksArray != null) {
+                            ArrayList<Task> tareas = null;
+                            tareas = new ArrayList<>();
+                            for (int i = 0; i < tasksArray.length(); i++) {
 
-                            tareas.add(task);
+                                JSONObject taskObject = tasksArray.getJSONObject(i);
+                                Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+
+                                tareas.add(task);
+
+                            }
+                            System.out.println(tareas);
+                            TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
+                            rvA.setAdapter(adapter);
+                            rvA.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
 
                         }
-                        System.out.println(tareas);
-                        TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
-                        rvA.setAdapter(adapter);
-                        rvA.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
-
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
