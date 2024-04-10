@@ -4,21 +4,29 @@ import static java.lang.Integer.parseInt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,37 +38,50 @@ import java.util.List;
 import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager2;
 
-    private Button btnLogout;
-
-    private RecyclerView rv, rvAs, rvA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        rv=findViewById(R.id.rvToDo);
-        rvAs=findViewById(R.id.rvSet);
-        rvA=findViewById(R.id.rvAccept);
-
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         }
 
 
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(this);
 
 
-        getTask(); //Este metodo debera recoger todas las tareas cuya clave foranea sea igual a 6 (que es la del admin);
-        //getTaskAssigned() Metodo que debera recoger todas las tareas asignadas al usuario que se encuentre logeado.
-        //getTaskAccepted() Metodo que debera recoger todas las tareas cuyo campo aceptado sea igual a 2 y que pertenezcan al usuario logeado.
-        //rellenarRecyclerView() Metodo que debera rellenar los 3 recyclerView con los datos obtenidos en los tres metodos anteriores.
+
+        /*getTask();
         getTaskAssigned();
         getTaskAccepted();
+    */
+
+
+        tabLayout=findViewById(R.id.tabLayout);
+        viewPager2=findViewById(R.id.viewpager2);
+
+        VPAdapter adapter = new VPAdapter(getSupportFragmentManager(),getLifecycle());
+        viewPager2.setAdapter(adapter);
+
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText("Tab "+(position+1));
+            }
+        }).attach();
+
+
     }
 
+    @Override
+    public void onClick(View v) {
 
+    }
+
+    /*
 
     private void getTask() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASK, new Response.Listener<String>() {
@@ -245,13 +266,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-
-    @Override
-    public void onClick(View v) {
-        if (v == btnLogout) {
-            SharedPrefManager.getInstance(this).logout();
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        }
-    }
+*/
 }
 
