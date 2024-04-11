@@ -24,7 +24,7 @@ public class VPAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         Fragment fragment = new taskWindow();
         Bundle args = new Bundle();
-        args.putString(taskWindow.TITLE,"Tab "+(position+1));
+        args.putString(taskWindow.TITLE,""+(position+1));
         //DATOS A INTRODUCIR EN EL RV
         //args.putStringArrayList();
         fragment.setArguments(args);

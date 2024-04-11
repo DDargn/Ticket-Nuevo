@@ -2,6 +2,7 @@ package com.example.ticket;
 
 public class Constants {
 
+
     private static final String ROOT_URL = "http://10.0.2.2/Android/v1/";
 
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
@@ -11,4 +12,5 @@ public class Constants {
     public static final String URL_TASKACCEPTED = ROOT_URL+"getTaskAccepted.php";
     public static final String URL_ACCEPT = ROOT_URL+"acceptTask.php";
     public static final String URL_NEGATE = ROOT_URL+"negateTask.php";
+    public static final String URL_COMPLETE = ROOT_URL+"completeTask.php";
 }

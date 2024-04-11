@@ -124,5 +124,33 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
+    private void complete() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_COMPLETE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("conxion realizada");
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error.getMessage());
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("title", data[0]);
+
+
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
 
 }

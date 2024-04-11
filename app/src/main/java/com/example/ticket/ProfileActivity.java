@@ -69,7 +69,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText("Tab "+(position+1));
+                tab.setText(""+(position+1));
+
             }
         }).attach();
 
@@ -83,66 +84,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     /*
 
-    private void getTask() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_TASK, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
 
-                int fk_iduser=0;
-                try {
-                    if(response.equals("[]")){
-
-                    }else{
-                        JSONObject object = new JSONObject(response);
-
-                        JSONArray tasksArray = object.getJSONArray("Tasks");
-
-
-
-                    if (tasksArray!=null) {
-                        ArrayList<Task> tareas = null;
-                        tareas = new ArrayList<>();
-                        for (int i = 0; i < tasksArray.length(); i++) {
-
-                            JSONObject taskObject = tasksArray.getJSONObject(i);
-                            Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
-
-                            tareas.add(task);
-
-                        }
-                        System.out.println(tareas);
-                        TaskAdapter adapter = new TaskAdapter(getApplicationContext(), tareas);
-                        rv.setAdapter(adapter);
-                        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "message", Toast.LENGTH_LONG).show();
-
-                    }
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        }
-
-        ) {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-
-
-                return params;
-            }
-        };
-        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
-    }
 
     private void getTaskAssigned() {
         final Integer fk_iduser = SharedPrefManager.getInstance(getApplicationContext()).getId();
