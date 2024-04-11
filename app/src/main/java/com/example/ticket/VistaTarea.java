@@ -31,7 +31,7 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
     String data[]=new String[2];
     TextView txt1,txt2;
 
-    Button btn1,btn2;
+    Button btn1,btn2,btn3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,8 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         btn2=findViewById(R.id.btn2);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
+        btn3=findViewById(R.id.btn3);
+        btn3.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -58,6 +60,9 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         } else if (v==btn2) {
 
             negate();
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        } else if (v==btn3) {
+            complete();
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         }
     }
