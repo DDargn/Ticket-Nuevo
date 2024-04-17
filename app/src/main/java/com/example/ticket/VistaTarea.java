@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.zip.Inflater;
 
 public class VistaTarea extends AppCompatActivity implements View.OnClickListener{
-    String data[]=new String[2];
-    TextView txt1,txt2;
+    String data[]=new String[3];
+    TextView txt1,txt2,title;
 
     Button btn1,btn2,btn3;
     @Override
@@ -44,26 +44,45 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         txt1.setText(data[0]);
         txt2.setText(data[1]);
         System.out.println(data[0]);
-        btn1=findViewById(R.id.btn1);
-        btn2=findViewById(R.id.btn2);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
         btn3=findViewById(R.id.btn3);
         btn3.setOnClickListener(this);
+
+        switch (data[2]){
+            case "1":
+                btn3.setText("Aceptar");
+
+                break;
+            case "2":
+                btn3.setText("Completar");
+                break;
+            case "3":
+                btn3.setText("Abrir");
+                break;
+        }
     }
     @Override
     public void onClick(View v) {
-        if (v == btn1) {
 
-            accept();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        } else if (v==btn2) {
+        if (v==btn3) {
+            switch (data[2]){
+                case "1":
+                    accept();
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    break;
 
-            negate();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        } else if (v==btn3) {
-            complete();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                case "2":
+
+                    complete();
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    break;
+
+                case "3":
+
+                    negate();
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    break;
+            }
+
         }
     }
 

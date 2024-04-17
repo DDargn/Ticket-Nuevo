@@ -21,7 +21,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
     Context context;
     private ArrayList<Task> tasks; // Assuming you have a list of Task objects
 
-    private String data[]= new String[2];
+    private String data[]= new String[3];
+    private String pos;
+
+    public void setPos(String pos) {
+        this.pos = pos;
+    }
 
     public TaskAdapter(Context context, ArrayList<Task> tasks) {
         this.context=context;
@@ -66,6 +71,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
 
                     data[0]=titulo.getText().toString();
                     data[1]=descripcion.getText().toString();
+                    data[2]=pos;
 
                     Intent intent = new Intent(context,VistaTarea.class);
                     intent.putExtra("Data",data);

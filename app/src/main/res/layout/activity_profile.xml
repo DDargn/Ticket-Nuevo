@@ -14,7 +14,7 @@
         android:drawableBottom="@android:drawable/arrow_down_float"
         android:gravity="center_vertical"
         android:paddingStart="20dp"
-        android:text="Completed Tasks"
+        android:text="ALL Tasks"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"

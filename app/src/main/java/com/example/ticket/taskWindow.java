@@ -78,6 +78,7 @@ public class taskWindow extends Fragment {
                                     }
                                     System.out.println(tareas);
                                     TaskAdapter adapter = new TaskAdapter(context, tareas);
+                                    adapter.setPos("1");
                                     rv.setAdapter(adapter);
                                     rv.setLayoutManager(new LinearLayoutManager(context));
                                 } else {
@@ -138,6 +139,8 @@ public class taskWindow extends Fragment {
                                     }
                                     System.out.println(tareas);
                                     TaskAdapter adapter = new TaskAdapter(context, tareas);
+                                    adapter.setPos("2");
+
                                     rv.setAdapter(adapter);
                                     rv.setLayoutManager(new LinearLayoutManager(context));
                                 } else {
@@ -198,6 +201,8 @@ public class taskWindow extends Fragment {
                                     }
                                     System.out.println(tareas);
                                     TaskAdapter adapter = new TaskAdapter(context, tareas);
+                                    adapter.setPos("3");
+
                                     rv.setAdapter(adapter);
                                     rv.setLayoutManager(new LinearLayoutManager(context));
                                 } else {
