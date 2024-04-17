@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".taskWindow">
 
+    <TextView
+        android:id="@+id/tituloApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#40BA97"
+        android:drawableBottom="@android:drawable/arrow_down_float"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:text="ALL Tasks"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -16,6 +29,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="674dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp" />
 
 </RelativeLayout>

@@ -140,7 +140,8 @@ public class taskWindow extends Fragment {
                                     System.out.println(tareas);
                                     TaskAdapter adapter = new TaskAdapter(context, tareas);
                                     adapter.setPos("2");
-
+                                    TextView textView = view.findViewById(R.id.tituloApp);
+                                    textView.setText("My tasks");
                                     rv.setAdapter(adapter);
                                     rv.setLayoutManager(new LinearLayoutManager(context));
                                 } else {
@@ -202,7 +203,8 @@ public class taskWindow extends Fragment {
                                     System.out.println(tareas);
                                     TaskAdapter adapter = new TaskAdapter(context, tareas);
                                     adapter.setPos("3");
-
+                                    TextView textView = view.findViewById(R.id.tituloApp);
+                                    textView.setText("Completed tasks");
                                     rv.setAdapter(adapter);
                                     rv.setLayoutManager(new LinearLayoutManager(context));
                                 } else {
