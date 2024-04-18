@@ -21,7 +21,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
     Context context;
     private ArrayList<Task> tasks; // Assuming you have a list of Task objects
 
-    private String data[]= new String[3];
+    private String data[]= new String[4];
     private String pos;
 
     public void setPos(String pos) {
@@ -45,6 +45,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
         Task task = tasks.get(position);
         holder.titulo.setText(task.getTitle());
         holder.descripcion.setText(task.getText());
+        holder.date.setText(task.getDate());
         Log.d("error", task.getTitle());
 
     }
@@ -56,14 +57,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
 
     public class TaskHolder extends RecyclerView.ViewHolder { // Define the ViewHolder as an inner class
 
-        TextView titulo;
+        TextView titulo,date;
         EditText descripcion;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.txtTitle);
             descripcion = itemView.findViewById(R.id.txtContext);
-
+            date = itemView.findViewById(R.id.txtDate);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -72,6 +73,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
                     data[0]=titulo.getText().toString();
                     data[1]=descripcion.getText().toString();
                     data[2]=pos;
+                    data[3]=date.getText().toString();
 
                     Intent intent = new Intent(context,VistaTarea.class);
                     intent.putExtra("Data",data);

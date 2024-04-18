@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.zip.Inflater;
 
 public class VistaTarea extends AppCompatActivity implements View.OnClickListener{
-    String data[]=new String[3];
-    TextView txt1,txt2,title;
+    String data[]=new String[4];
+    TextView txt1,txt2,title,txt3;
 
     Button btn1,btn2,btn3;
     @Override
@@ -41,8 +41,10 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         data=extras.getStringArray("Data");
         txt1= findViewById(R.id.txtTitleV);
         txt2= findViewById(R.id.txtContextV);
+        txt3= findViewById(R.id.txtDateV);
         txt1.setText(data[0]);
         txt2.setText(data[1]);
+        txt3.setText(data[3]);
         System.out.println(data[0]);
         btn3=findViewById(R.id.btn3);
         btn3.setOnClickListener(this);

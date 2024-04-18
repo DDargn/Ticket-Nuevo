@@ -71,7 +71,7 @@ public class taskWindow extends Fragment {
                                     for (int i = 0; i < tasksArray.length(); i++) {
 
                                         JSONObject taskObject = tasksArray.getJSONObject(i);
-                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"),taskObject.getString("Date"));
 
                                         tareas.add(task);
 
@@ -132,7 +132,7 @@ public class taskWindow extends Fragment {
                                     for (int i = 0; i < tasksArray.length(); i++) {
 
                                         JSONObject taskObject = tasksArray.getJSONObject(i);
-                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"),taskObject.getString("Date"));
 
                                         tareas.add(task);
 
@@ -195,7 +195,7 @@ public class taskWindow extends Fragment {
                                     for (int i = 0; i < tasksArray.length(); i++) {
 
                                         JSONObject taskObject = tasksArray.getJSONObject(i);
-                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"));
+                                        Task task = new Task(taskObject.getInt("fk_iduser"), taskObject.getString("title"), taskObject.getString("text"),taskObject.getString("Date"));
 
                                         tareas.add(task);
 

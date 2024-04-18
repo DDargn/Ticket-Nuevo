@@ -5,10 +5,13 @@ public class Task {
     private String title;
     private String text;
 
-    public Task (int fk_iduser, String title, String text){
+    private String date;
+
+    public Task (int fk_iduser, String title, String text, String date){
         this.title=title;
         this.fk_iduser=fk_iduser;
         this.text=text;
+        this.date=date;
 
     }
 
@@ -26,6 +29,14 @@ public class Task {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
