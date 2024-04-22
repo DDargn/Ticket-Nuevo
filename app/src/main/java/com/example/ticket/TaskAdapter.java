@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -60,11 +61,32 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
         TextView titulo,date;
         EditText descripcion;
 
+        RadioButton rb;
+
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.txtTitle);
             descripcion = itemView.findViewById(R.id.txtContext);
             date = itemView.findViewById(R.id.txtDate);
+            rb = itemView.findViewById(R.id.radioButton);
+
+            rb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    data[0]=titulo.getText().toString();
+                    data[1]=descripcion.getText().toString();
+                    data[2]=pos;
+                    data[3]=date.getText().toString();
+
+                    Intent intent = new Intent(context,VistaTarea.class);
+                    intent.putExtra("Data",data);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    context.startActivity(intent);
+                }
+            });
+
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
