@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-04-2024 a las 11:45:23
+-- Tiempo de generación: 18-04-2024 a las 08:06:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,24 +32,25 @@ CREATE TABLE `tasks` (
   `fk_iduser` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `text` varchar(100) NOT NULL,
-  `type` int(11) NOT NULL
+  `type` int(11) NOT NULL,
+  `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `fk_iduser`, `title`, `text`, `type`) VALUES
-(1, 3, 'Hola prueba', 'este es el task de prueba', 2),
-(2, 3, 'Hola prueba', 'este es el task de prueba', 2),
-(6, 6, 'Master prueba', 'soy el master', 0),
-(7, 6, 'Master prueba', 'soy el master', 0),
-(8, 3, 'tarea asignada', 'Hola soy la tarea asignada', 1),
-(9, 6, 'tarea aceptada', 'hola soy la tarea aceptada', 0),
-(10, 3, 'tarea asignada', 'Hola soy la tarea asignada', 1),
-(11, 6, 'tarea aceptada', 'hola soy la tarea aceptada', 0),
-(12, 3, 'hola', 'holamundo\r\n\r\n\r\n\r\nhola', 2),
-(13, 3, 'hola', 'holamundo\r\n\r\n\r\n\r\nhola', 2);
+INSERT INTO `tasks` (`id`, `fk_iduser`, `title`, `text`, `type`, `Date`) VALUES
+(1, 6, 'Hola prueba', 'este es el task de prueba', 2, '0000-00-00'),
+(2, 6, 'Hola prueba', 'este es el task de prueba', 2, '0000-00-00'),
+(6, 6, 'Master prueba', 'soy el master', 0, '0000-00-00'),
+(7, 6, 'Master prueba', 'soy el master', 0, '0000-00-00'),
+(8, 3, 'tarea asignada', 'Hola soy la tarea asignada', 1, '0000-00-00'),
+(9, 3, 'tarea aceptada', 'hola soy la tarea aceptada', 2, '0000-00-00'),
+(10, 3, 'tarea asignada', 'Hola soy la tarea asignada', 1, '0000-00-00'),
+(11, 3, 'tarea aceptada', 'hola soy la tarea aceptada', 2, '0000-00-00'),
+(12, 6, 'hola', 'holamundo\r\n\r\n\r\n\r\nhola', 0, '0000-00-00'),
+(13, 6, 'hola', 'holamundo\r\n\r\n\r\n\r\nhola', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
