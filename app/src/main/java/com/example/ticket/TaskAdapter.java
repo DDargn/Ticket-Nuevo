@@ -15,7 +15,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
@@ -30,7 +38,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
     }
 
     public TaskAdapter(Context context, ArrayList<Task> tasks) {
-        this.context=context;
+        this.context= context.getApplicationContext();
         this.tasks = tasks;
     }
 
@@ -63,6 +71,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
 
         RadioButton rb;
 
+
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.txtTitle);
@@ -78,12 +87,125 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder>{
                     data[2]=pos;
                     data[3]=date.getText().toString();
 
-                    Intent intent = new Intent(context,VistaTarea.class);
-                    intent.putExtra("Data",data);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        switch (data[2]){
+                            case "1":
+                                accept();
 
-                    context.startActivity(intent);
+                                Intent intent = new Intent(context,ProfileActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                                break;
+
+                            case "2":
+
+                                complete();
+                                intent = new Intent(context,ProfileActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                                break;
+
+                            case "3":
+
+                                negate();
+                                intent = new Intent(context,ProfileActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                                break;
+                        }
+
+
                 }
+
+
+
+                private void accept() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ACCEPT, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            System.out.println("conxion realizada");
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println(error.getMessage());
+
+                        }
+                    }){
+
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            final String fk_iduser = Integer.toString(SharedPrefManager.getInstance(context).getId());
+
+                            Map<String, String> params = new HashMap<>();
+                            params.put("title", data[0]);
+                            params.put("id", fk_iduser);
+
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+                }
+                private void negate() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_NEGATE, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            System.out.println("conxion realizada");
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println(error.getMessage());
+
+                        }
+                    }){
+
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("title", data[0]);
+
+
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+
+                }
+                private void complete() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_COMPLETE, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            System.out.println("conxion realizada");
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println(error.getMessage());
+
+                        }
+                    }){
+
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("title", data[0]);
+
+
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+                }
+
             });
 
 

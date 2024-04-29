@@ -120,7 +120,7 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
         finish();
-        startActivity(new Intent(this, ProfileActivity.class));
+
     }
     private void negate() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_NEGATE, new Response.Listener<String>() {
@@ -149,6 +149,7 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        finish();
     }
     private void complete() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_COMPLETE, new Response.Listener<String>() {
@@ -177,6 +178,7 @@ public class VistaTarea extends AppCompatActivity implements View.OnClickListene
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        finish();
     }
 
 }
